@@ -1,2 +1,2 @@
 # PentestRecon
-CheatSheet for Pentest
+CheatSheets for Pentest
