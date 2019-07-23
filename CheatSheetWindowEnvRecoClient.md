@@ -62,7 +62,8 @@ findstr /si password *.xml
 findstr /si password *.ini
 findstr /si password *.conf
 
-# Find all passwords in all files.
+
+#check password in all files
 findstr /spin "password" *.*
 
 
