@@ -1,4 +1,5 @@
 #This cheatsheet is for recon of a windows environnement starting with a simple computer member of the domain.
+
 #get iP configuration
 ipconfig /all 
 
