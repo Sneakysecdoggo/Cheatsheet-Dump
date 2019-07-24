@@ -83,7 +83,7 @@ net user /DOMAIN administrator
 
 ## Identify all domain controller 
 
-[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().DomainControllers
+"[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().DomainControllers"
 
 ## Identify DnS server, it many case in WIndow Env it's a domain Controller
 
