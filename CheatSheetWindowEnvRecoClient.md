@@ -206,6 +206,9 @@ powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File 
 
  PSEXEC -i -s -d CMD
 
+##Port forwarding 
+netsh interface portproxy add v4tov4 listenaddress=localaddress listenport=localport connectaddress=destaddress connectport=destport
+
 ## Check cpassword in SYSVOL
 findstr /si cpassword *.xml
 
